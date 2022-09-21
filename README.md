@@ -1,1 +1,1 @@
-# nano-forms-core
+# @nano-forms/core
