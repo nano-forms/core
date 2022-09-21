@@ -1,12 +1,13 @@
 {
   "name": "@nano-forms/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Core of Nano Forms",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "lint": "prettier --write --config prettier.config.js --list-different src/**/*.ts",
+    "prepublish": "tsc",
     "start": "npm run build && node dist/test.js"
   },
   "repository": {
