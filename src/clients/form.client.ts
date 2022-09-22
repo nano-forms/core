@@ -27,6 +27,18 @@ export class FormClient {
     return await this.create(formRequest);
   }
 
+  public async createSubmission(
+    form: Form,
+    data: { [key: string]: string | { type: string } }
+  ): Promise<Form> {
+    const response = await axios.post<Form>(
+      `${BASE_URL}/api/v1/forms/${form.reference}/submissions`,
+      data
+    );
+
+    return response.data;
+  }
+
   public async find(reference: string): Promise<Form> {
     const response = await axios.get<Form>(
       `${BASE_URL}/api/v1/forms/${reference}`
