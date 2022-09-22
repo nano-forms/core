@@ -19,7 +19,7 @@ export class FormClient {
   public async createFromTemplate(
     formRequestTemplate: FormRequest,
     fn: (formRequest: FormRequest) => FormRequest,
-    data: { [key: string]: string | { type: string } }
+    data: { [key: string]: string | { type: string } } | null
   ): Promise<Form> {
     const formRequest: FormRequest = FormRequestHelper.populate(
       fn(ObjectHelper.clone(formRequestTemplate)),
