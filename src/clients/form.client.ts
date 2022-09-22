@@ -26,4 +26,12 @@ export class FormClient {
 
     return await this.create(formRequest);
   }
+
+  public async find(reference: string): Promise<Form> {
+    const response = await axios.get<Form>(
+      `${BASE_URL}/api/v1/forms/${reference}`
+    );
+
+    return response.data;
+  }
 }
