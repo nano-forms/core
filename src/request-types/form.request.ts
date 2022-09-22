@@ -1,4 +1,4 @@
-import { FormField } from "@nano-forms/core";
+import { FormField } from '../types';
 
 export type FormRequest = {
   actions: {
@@ -23,7 +23,7 @@ export type FormRequest = {
 
   metadata: { [key: string]: string };
 
-  status: "disabled" | "enabled";
+  status: 'disabled' | 'enabled';
 
   subtitle: string | null;
 
