@@ -11,7 +11,9 @@ export type FormField = {
 
   options: Array<{ label: string }> | null;
 
-  type: "date" | "dropdown" | "file_upload" | "short_text" | "yes_no";
+  placeholder: string | null;
+
+  type: 'date' | 'dropdown' | 'file_upload' | 'short_text' | 'yes_no';
 
   validations: {
     pattern: string | null;
