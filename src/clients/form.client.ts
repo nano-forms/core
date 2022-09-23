@@ -5,12 +5,18 @@ import { FormRequest } from '../request-types';
 import { Datum, Form } from '../types';
 
 export class FormClient {
-  constructor(protected tenantId: string) {}
+  constructor(protected key: string, protected secret: string) {}
 
   public async create(formRequest: FormRequest): Promise<Form> {
     const response = await axios.post<Form>(
       `${BASE_URL}/api/v1/forms`,
-      formRequest
+      formRequest,
+      {
+        auth: {
+          password: this.secret,
+          username: this.key,
+        },
+      }
     );
 
     return response.data;
