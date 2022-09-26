@@ -24,11 +24,15 @@ export class FormHelper {
           let yupStringSchema: yup.StringSchema = yup.string();
 
           if (field.fieldType === 'email_address') {
-            yupStringSchema = yupStringSchema.email();
+            yupStringSchema = yupStringSchema.email(
+              field.validationMessages.required || 'Required'
+            );
           }
 
           if (field.validations.required) {
-            yupStringSchema = yupStringSchema.required();
+            yupStringSchema = yupStringSchema.required(
+              field.validationMessages.required || 'Required'
+            );
           } else {
             dict[field.id] = yupStringSchema.optional();
           }
