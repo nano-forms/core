@@ -25,7 +25,7 @@ export class FormHelper {
 
           if (field.fieldType === 'email_address') {
             yupStringSchema = yupStringSchema.email(
-              field.validationMessages.required || 'Required'
+              field.validationMessages.emailAddress || 'Invalid'
             );
           }
 

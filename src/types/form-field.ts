@@ -16,6 +16,8 @@ export type FormField = {
   type: 'date' | 'dropdown' | 'file_upload' | 'short_text' | 'yes_no';
 
   validationMessages: {
+    emailAddress: string | null;
+
     patterns: Array<string> | null;
 
     required: string | null;
