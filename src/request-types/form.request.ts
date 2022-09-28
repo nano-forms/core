@@ -13,7 +13,7 @@ export type FormRequest = {
     logo: string;
   };
 
-  buttons_text: {
+  buttons: {
     submit: string;
   };
 
