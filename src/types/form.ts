@@ -1,4 +1,4 @@
-import { FormField } from "./form-field";
+import { FormField } from './form-field';
 
 export type Form = {
   actions: {
@@ -15,7 +15,7 @@ export type Form = {
     logo: string;
   };
 
-  buttons_text: {
+  buttons: {
     submit: string;
   };
 
@@ -27,7 +27,7 @@ export type Form = {
 
   reference: string;
 
-  status: "disabled" | "enabled";
+  status: 'disabled' | 'enabled';
 
   subtitle: string | null;
 
