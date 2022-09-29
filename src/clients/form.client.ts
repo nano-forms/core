@@ -5,18 +5,32 @@ import { FormRequest } from '../request-types';
 import { Datum, Form } from '../types';
 
 export class FormClient {
-  constructor(protected key: string, protected secret: string) {}
+  constructor(
+    protected token: string,
+    protected key: string | null = null,
+    protected secret: string | null = null
+  ) {}
+
+  protected config() {
+    return this.key && this.secret
+      ? {
+          auth: {
+            password: this.secret,
+            username: this.key,
+          },
+        }
+      : {
+          headers: {
+            Authorization: `Bearer ${this.token}`,
+          },
+        };
+  }
 
   public async create(formRequest: FormRequest): Promise<Form> {
     const response = await axios.post<Form>(
       `${BASE_URL}/api/v1/forms`,
       formRequest,
-      {
-        auth: {
-          password: this.secret,
-          username: this.key,
-        },
-      }
+      this.config()
     );
 
     return response.data;
@@ -41,7 +55,8 @@ export class FormClient {
   ): Promise<Datum | { location: string }> {
     const response = await axios.post<Datum | { location: string }>(
       `${BASE_URL}/api/v1/forms/${form.reference}/submissions`,
-      data
+      data,
+      this.config()
     );
 
     return response.data;
@@ -49,8 +64,21 @@ export class FormClient {
 
   public async find(reference: string): Promise<Form> {
     const response = await axios.get<Form>(
-      `${BASE_URL}/api/v1/forms/${reference}`
+      `${BASE_URL}/api/v1/forms/${reference}`,
+      this.config()
     );
+
+    return response.data;
+  }
+
+  public async findAll(page: number, pageSize: number): Promise<Form> {
+    const response = await axios.get<Form>(`${BASE_URL}/api/v1/forms`, {
+      ...this.config(),
+      params: {
+        page,
+        pageSize,
+      },
+    });
 
     return response.data;
   }
