@@ -71,8 +71,21 @@ export class FormClient {
     return response.data;
   }
 
-  public async findAll(page: number, pageSize: number): Promise<Form> {
-    const response = await axios.get<Form>(`${BASE_URL}/api/v1/forms`, {
+  public async findAll(
+    page: number,
+    pageSize: number
+  ): Promise<{
+    count: number;
+    items: Array<Form>;
+    page: number;
+    pageSize: number;
+  }> {
+    const response = await axios.get<{
+      count: number;
+      items: Array<Form>;
+      page: number;
+      pageSize: number;
+    }>(`${BASE_URL}/api/v1/forms`, {
       ...this.config(),
       params: {
         page,
