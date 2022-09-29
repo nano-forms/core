@@ -6,24 +6,30 @@ import { Datum, Form } from '../types';
 
 export class FormClient {
   constructor(
-    protected token: string,
+    protected token: string | null,
     protected key: string | null = null,
     protected secret: string | null = null
   ) {}
 
   protected config() {
-    return this.key && this.secret
-      ? {
-          auth: {
-            password: this.secret,
-            username: this.key,
-          },
-        }
-      : {
-          headers: {
-            Authorization: `Bearer ${this.token}`,
-          },
-        };
+    if (this.token) {
+      return {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      };
+    }
+
+    if (this.key && this.secret) {
+      return {
+        auth: {
+          password: this.secret,
+          username: this.key,
+        },
+      };
+    }
+
+    return {};
   }
 
   public async create(formRequest: FormRequest): Promise<Form> {
