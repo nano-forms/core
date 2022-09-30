@@ -9,7 +9,11 @@ export type FormField = {
 
   label: string;
 
-  options: Array<{ label: string }> | null;
+  options: {
+    items: Array<{ label: string }> | null;
+
+    uri: string | null;
+  } | null;
 
   placeholder: string | null;
 
