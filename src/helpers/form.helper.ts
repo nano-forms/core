@@ -34,7 +34,21 @@ export class FormHelper {
               field.validationMessages.required || 'Required'
             );
           } else {
-            dict[field.id] = yupStringSchema.optional();
+            yupStringSchema = yupStringSchema.optional();
+          }
+
+          if (field.validations.patterns) {
+            for (const [
+              index,
+              pattern,
+            ] of field.validations.patterns.entries()) {
+              yupStringSchema = yupStringSchema.matches(
+                new RegExp(pattern),
+                field.validationMessages.patterns
+                  ? field.validationMessages.patterns[index]
+                  : 'Invalid'
+              );
+            }
           }
 
           dict[field.id] = yupStringSchema;

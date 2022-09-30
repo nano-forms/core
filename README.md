@@ -5,7 +5,7 @@
 Using npm:
 
 ```bash
-$ npm install axios
+$ npm install @nano-forms/core
 ```
 
 ## Examples
