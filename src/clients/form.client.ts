@@ -68,6 +68,15 @@ export class FormClient {
     return response.data;
   }
 
+  public async delete(reference: string): Promise<Form> {
+    const response = await axios.delete<Form>(
+      `${BASE_URL}/api/v1/forms/${reference}`,
+      this.config()
+    );
+
+    return response.data;
+  }
+
   public async find(reference: string): Promise<Form> {
     const response = await axios.get<Form>(
       `${BASE_URL}/api/v1/forms/${reference}`,

@@ -1,7 +1,7 @@
 export type Datum = {
   createdAt: number;
 
-  data: { [key: string]: string | { type: string } };
+  data: { [key: string]: string | Array<string> | { type: string } };
 
   partition: string;
 

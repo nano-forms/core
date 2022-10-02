@@ -33,5 +33,5 @@ export type FormField = {
     required: boolean;
   };
 
-  value: string | { type: string } | null;
+  value: string | Array<string> | { type: string } | null;
 };
