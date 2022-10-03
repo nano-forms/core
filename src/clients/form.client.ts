@@ -55,11 +55,29 @@ export class FormClient {
     return await this.create(formRequest);
   }
 
-  public async createSubmission(
+  public async createSubmission(form: Form, data: DatumData): Promise<Datum> {
+    const response = await axios.post<Datum>(
+      `${BASE_URL}/api/v1/forms/${form.reference}/submissions`,
+      data,
+      this.config()
+    );
+
+    return response.data;
+  }
+
+  public async createSubmissionWithWebhook(
     form: Form,
     data: DatumData
-  ): Promise<Datum | { location: string }> {
-    const response = await axios.post<Datum | { location: string }>(
+  ): Promise<{
+    errorMessages: Array<string>;
+    location: string | null;
+    status: 'error' | 'ok';
+  }> {
+    const response = await axios.post<{
+      errorMessages: Array<string>;
+      location: string | null;
+      status: 'error' | 'ok';
+    }>(
       `${BASE_URL}/api/v1/forms/${form.reference}/submissions`,
       data,
       this.config()
