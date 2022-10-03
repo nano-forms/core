@@ -17,7 +17,13 @@ export type FormField = {
 
   placeholder: string | null;
 
-  type: 'date' | 'dropdown' | 'file_upload' | 'short_text' | 'yes_no';
+  type:
+    | 'date'
+    | 'dropdown'
+    | 'file_upload'
+    | 'multiple_choice'
+    | 'short_text'
+    | 'yes_no';
 
   validationMessages: {
     emailAddress: string | null;
