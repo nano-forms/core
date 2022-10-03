@@ -1,9 +1,10 @@
 import { FormRequest } from '../request-types';
+import { DatumData } from '../types';
 
 export class FormRequestHelper {
   public static populate(
     formRequest: FormRequest,
-    data: { [key: string]: string | { type: string } } | null
+    data: DatumData
   ): FormRequest {
     if (!data) {
       return formRequest;

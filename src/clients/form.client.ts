@@ -2,7 +2,7 @@ import axios from 'axios';
 import { BASE_URL } from '../constants';
 import { FormRequestHelper, ObjectHelper } from '../helpers';
 import { FormRequest } from '../request-types';
-import { Datum, Form } from '../types';
+import { Datum, DatumData, Form } from '../types';
 
 export class FormClient {
   constructor(
@@ -45,7 +45,7 @@ export class FormClient {
   public async createFromTemplate(
     formRequestTemplate: FormRequest,
     fn: (formRequest: FormRequest) => FormRequest,
-    data: { [key: string]: string | { type: string } } | null
+    data: DatumData
   ): Promise<Form> {
     const formRequest: FormRequest = FormRequestHelper.populate(
       fn(ObjectHelper.clone(formRequestTemplate)),
@@ -57,7 +57,7 @@ export class FormClient {
 
   public async createSubmission(
     form: Form,
-    data: { [key: string]: string | { type: string } }
+    data: DatumData
   ): Promise<Datum | { location: string }> {
     const response = await axios.post<Datum | { location: string }>(
       `${BASE_URL}/api/v1/forms/${form.reference}/submissions`,

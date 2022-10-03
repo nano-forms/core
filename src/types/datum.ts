@@ -1,7 +1,9 @@
+import { DatumData } from "./datum-data";
+
 export type Datum = {
   createdAt: number;
 
-  data: { [key: string]: string | Array<string> | { type: string } };
+  data: DatumData;
 
   partition: string;
 
