@@ -6,7 +6,12 @@ export class FormHelper {
     return yup.object().shape(
       form.fields.reduce(
         (
-          dict: { [key: string]: yup.ObjectSchema<any> | yup.StringSchema },
+          dict: {
+            [key: string]:
+              | yup.ArraySchema<any>
+              | yup.ObjectSchema<any>
+              | yup.StringSchema;
+          },
           field: FormField
         ) => {
           if (field.type === 'file_upload') {
@@ -17,6 +22,12 @@ export class FormHelper {
                 type: yup.string(),
               })
               .nullable();
+
+            return dict;
+          }
+
+          if (field.type === 'multiple_choice') {
+            dict[field.id] = yup.array().of(yup.string());
 
             return dict;
           }
