@@ -1,22 +1,21 @@
 import * as yup from 'yup';
 
 export const FORM_REQUEST_SCHEMA = yup.object().shape({
-  actions: yup.object().shape({
-    previous: yup
-      .object()
-      .shape({ uri: yup.string().required().url() })
-      .nullable(),
+  actions: yup.object({
+    previous: yup.object({ uri: yup.string().required() }).nullable(),
   }),
-  brand: yup.object().shape({
-    color: yup.string(),
-    logo: yup.string(),
-  }),
-  buttons: yup.object().shape({
+  brand: yup
+    .object({
+      color: yup.string(),
+      logo: yup.string(),
+    })
+    .required(),
+  buttons: yup.object({
     submit: yup.string(),
   }),
   dataReference: yup.string().nullable(),
   fields: yup.array().of(
-    yup.object().shape({
+    yup.object({
       disabled: yup.bool(),
       fieldType: yup
         .string()
@@ -33,12 +32,11 @@ export const FORM_REQUEST_SCHEMA = yup.object().shape({
       id: yup.string().required(),
       label: yup.string().required(),
       options: yup
-        .object()
-        .shape({
+        .object({
           items: yup
             .array()
             .of(
-              yup.object().shape({
+              yup.object({
                 label: yup.string().required(),
               })
             )
@@ -52,8 +50,7 @@ export const FORM_REQUEST_SCHEMA = yup.object().shape({
   status: yup.string().oneOf(['disabled', 'enabled']),
   subtitle: yup.string().nullable(),
   thankYouPage: yup
-    .object()
-    .shape({
+    .object({
       subtitle: yup.string().nullable(),
       title: yup.string().required(),
     })
