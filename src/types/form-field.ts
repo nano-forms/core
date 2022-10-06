@@ -1,7 +1,7 @@
 export type FormField = {
   disabled: boolean;
 
-  fieldType: string | null;
+  fieldType: 'auto_complete' | 'auto_complete_address' | 'email_address' | 'password' | 'phone_number' | 'url' |  null;
 
   hint: string | null;
 
