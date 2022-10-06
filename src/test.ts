@@ -1,7 +1,7 @@
 import { FormRequest } from './request-types';
 import { FORM_REQUEST_SCHEMA } from './schemas';
 
-const formRequest: FormRequest = {
+const formRequest: FormRequest | any = {
   actions: {
     previous: null,
   },
