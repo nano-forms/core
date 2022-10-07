@@ -38,7 +38,7 @@ export const FORM_REQUEST_SCHEMA = yup.object().shape({
             'phone_number',
             'url',
             null,
-          ]),
+          ]).nullable(),
         hint: yup.string().defined().nullable(),
         id: yup.string().defined().required(),
         label: yup.string().defined().required(),
@@ -59,6 +59,28 @@ export const FORM_REQUEST_SCHEMA = yup.object().shape({
           })
           .defined()
           .nullable(),
+        placeholder: yup.string().defined().nullable(),
+        type: yup
+          .string()
+          .defined()
+          .oneOf([
+            'date',
+            'dropdown',
+            'file_upload',
+            'multiple_choice',
+            'short_text',
+            'yes_no',
+          ]),
+        validationMessages: yup.object({
+          emailAddress: yup.string().defined().nullable(),
+          patterns: yup.array().defined().of(yup.string()).nullable(),
+          required: yup.string().defined().nullable(),
+        }),
+        validations: yup.object({
+          patterns: yup.array().defined().of(yup.string()).nullable(),
+          required: yup.bool().defined(),
+        }),
+        value: yup.mixed().defined().nullable(),
       })
     ),
   metadata: yup.object().defined(),
