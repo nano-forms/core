@@ -16,7 +16,7 @@ const formRequest: FormRequest | any = {
   fields: [
     {
       disabled: false,
-      fieldType: 'email_address',
+      fieldType: null,
       hint: 'Please use a work email address if available',
       id: 'emailAddress',
       label: 'Email Address',

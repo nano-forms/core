@@ -37,8 +37,8 @@ export const FORM_REQUEST_SCHEMA = yup.object().shape({
             'password',
             'phone_number',
             'url',
-          ])
-          .nullable(),
+            null,
+          ]),
         hint: yup.string().defined().nullable(),
         id: yup.string().defined().required(),
         label: yup.string().defined().required(),
