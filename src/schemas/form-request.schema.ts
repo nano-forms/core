@@ -3,21 +3,21 @@ import * as yup from 'yup';
 export const FORM_REQUEST_SCHEMA = yup.object().shape({
   actions: yup
     .object({
+      next: yup
+        .object({
+          color: yup.string().defined().required(),
+          text: yup.string().defined().required(),
+          uri: yup.string().defined().required(),
+        })
+        .defined(),
       previous: yup
-        .object({ uri: yup.string().defined().required() })
+        .object({
+          color: yup.string().defined().required(),
+          text: yup.string().defined().required(),
+          uri: yup.string().defined().required(),
+        })
         .defined()
         .nullable(),
-    })
-    .defined(),
-  brand: yup
-    .object({
-      color: yup.string().defined().required(),
-      logo: yup.string().defined().required(),
-    })
-    .defined(),
-  buttons: yup
-    .object({
-      submit: yup.string().defined().required(),
     })
     .defined(),
   dataReference: yup.string().defined().nullable(),
@@ -38,7 +38,8 @@ export const FORM_REQUEST_SCHEMA = yup.object().shape({
             'phone_number',
             'url',
             null,
-          ]).nullable(),
+          ])
+          .nullable(),
         hint: yup.string().defined().nullable(),
         id: yup.string().defined().required(),
         label: yup.string().defined().required(),
@@ -83,16 +84,10 @@ export const FORM_REQUEST_SCHEMA = yup.object().shape({
         value: yup.mixed().defined().nullable(),
       })
     ),
+  logo: yup.string().defined().required(),
   metadata: yup.object().defined(),
   status: yup.string().defined().oneOf(['disabled', 'enabled']),
   subtitle: yup.string().defined().nullable(),
-  thankYouPage: yup
-    .object({
-      subtitle: yup.string().defined().nullable(),
-      title: yup.string().defined().required(),
-    })
-    .defined()
-    .nullable(),
   title: yup.string().defined().required(),
   webhook: yup.string().defined().url().nullable(),
 });

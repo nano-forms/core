@@ -2,36 +2,34 @@ import { FormField } from '../types';
 
 export type FormRequest = {
   actions: {
+    next: {
+      color: string;
+
+      text: string;
+
+      uri: string;
+    };
+
     previous: {
+      color: string;
+
+      text: string;
+
       uri: string;
     } | null;
-  };
-
-  brand: {
-    color: string;
-
-    logo: string;
-  };
-
-  buttons: {
-    submit: string;
   };
 
   dataReference: string | null;
 
   fields: Array<FormField>;
 
+  logo: string;
+
   metadata: { [key: string]: string };
 
   status: 'disabled' | 'enabled';
 
   subtitle: string | null;
-
-  thankYouPage: {
-    subtitle: string | null;
-
-    title: string;
-  } | null;
 
   title: string;
 

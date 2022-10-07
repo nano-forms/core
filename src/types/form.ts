@@ -2,26 +2,30 @@ import { FormField } from './form-field';
 
 export type Form = {
   actions: {
+    next: {
+      color: string;
+
+      text: string;
+
+      uri: string;
+    };
+
     previous: {
+      color: string;
+
+      text: string;
+
       uri: string;
     } | null;
   };
 
   createdAt: number;
 
-  brand: {
-    color: string;
-
-    logo: string;
-  };
-
-  buttons: {
-    submit: string;
-  };
-
   dataReference: string | null;
 
   fields: Array<FormField>;
+
+  logo: string;
 
   metadata: { [key: string]: string };
 
@@ -32,12 +36,6 @@ export type Form = {
   subtitle: string | null;
 
   tenantId: string | null;
-
-  thankYouPage: {
-    subtitle: string | null;
-
-    title: string;
-  } | null;
 
   title: string;
 
