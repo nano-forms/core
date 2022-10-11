@@ -1,6 +1,6 @@
 {
   "name": "@nano-forms/core",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Core of Nano Forms",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

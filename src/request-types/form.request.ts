@@ -19,6 +19,10 @@ export type FormRequest = {
     } | null;
   };
 
+  analytics: {
+    mixpanel: string | null;
+  };
+
   dataReference: string | null;
 
   fields: Array<FormField>;
