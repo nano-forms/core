@@ -20,6 +20,11 @@ export const FORM_REQUEST_SCHEMA = yup.object().shape({
         .nullable(),
     })
     .defined(),
+  analytics: yup
+    .object({
+      mixpanel: yup.string().defined().nullable(),
+    })
+    .defined(),
   dataReference: yup.string().defined().nullable(),
   fields: yup
     .array()

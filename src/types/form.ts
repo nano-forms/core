@@ -19,6 +19,10 @@ export type Form = {
     } | null;
   };
 
+  analytics: {
+    mixpanel: string | null;
+  };
+
   createdAt: number;
 
   dataReference: string | null;

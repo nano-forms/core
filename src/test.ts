@@ -3,20 +3,23 @@ import { FORM_REQUEST_SCHEMA } from './schemas';
 
 const formRequest: FormRequest | any = {
   actions: {
-    previous: null,
+    next: {
+      color: '#000000',
+      text: 'Apply Now',
+      uri: 'https://trynovel.com',
+    },
+    previous: {
+      color: '#000000',
+      text: 'Back',
+      uri: 'https://trynovel.com',
+    },
   },
-  brand: {
-    color: '#000000',
-    logo: 'https://assets.website-files.com/60425402fee4250aed708db0/60f9d46f08c918299f20bddc_Combination%20mark%20color%20logo%20black%20text.svg',
-  },
-  buttons: {
-    submit: 'Apply Now',
-  },
+  createdAt: 1665132924450,
   dataReference: null,
   fields: [
     {
       disabled: false,
-      fieldType: null,
+      fieldType: 'email_address',
       hint: 'Please use a work email address if available',
       id: 'emailAddress',
       label: 'Email Address',
@@ -35,13 +38,18 @@ const formRequest: FormRequest | any = {
       value: null,
     },
   ],
-  metadata: {},
+  logo: 'https://assets.website-files.com/60425402fee4250aed708db0/60f9d46f08c918299f20bddc_Combination%20mark%20color%20logo%20black%20text.svg',
+  metadata: {
+    reference: '00shm5',
+  },
+  reference: '12r42z',
   status: 'enabled',
   subtitle:
     'Novel is all your business financial apps in one place: banking, payouts, invoicing, cards & more',
-  thankYouPage: null,
+  tenantId: 'google-oauth2|102857191578298947818',
   title: 'Simplify your business finances',
-  webhook: 'https://novel-project.azurewebsites.net/api/v1/webhooks/sign-up',
+  updatedAt: 1665403917495,
+  webhook: 'https://api-nanoforms-io.azurewebsites.net/api/v1/webhooks/12r42z',
 };
 
 try {
